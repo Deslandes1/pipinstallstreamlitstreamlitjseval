@@ -49,13 +49,13 @@ with col2:
             for i in range(100):
                 time.sleep(0.03) 
                 progress_bar.progress(i + 1)
-        st.success("Done! Resource Data Extracted.")
+    st.success("Done! Resource Data Extracted.")
         # --- 4. MAPPING & REPORTING ---
         st.write("---")
         st.subheader("🗺️ Resource Location Map")
         map_data = pd.DataFrame({'lat': [lat], 'lon': [lon]})
         st.map(map_data)
-        # Create Report Data
+# Create Report Data
         now = datetime.datetime.now()
         report_df = pd.DataFrame({
             "Developer": ["GESNER DESLANDES"],
@@ -65,9 +65,9 @@ with col2:
             "Field Notes": [st.session_state.notes],
             "Timestamp": [now.strftime("%Y-%m-%d %H:%M:%S")]
         })
-        st.write("### 📊 Official Research Report")
+  st.write("### 📊 Official Research Report")
         st.table(report_df)
-        # Download Button
+ # Download Button
         csv = report_df.to_csv(index=False).encode('utf-8')
         st.download_button(
             label="📥 DOWNLOAD REPORT (.CSV)",
@@ -75,7 +75,7 @@ with col2:
             file_name=f"Infinity_Scan_{now.strftime('%Y%m%d')}.csv",
             mime="text/csv"
         )
- # External Link
+# External Link
         search_url = f"https://www.google.com/search?q=geology+at+{lat}+{lon}"
         st.link_button("🌐 Open Chrome Geological Analysis", search_url)
 # --- 5. FOOTER ---
